@@ -1,14 +1,29 @@
 version: "3.3"
+
 services:
   nginx:
     build: nginx/.
+    restart: always
     ports:
       - "8080:80"
-#  wordpress:
-#    build: wordpress/.
+    networks:
+      - my_network
+  wordpress:
+    depends_on:
+      - mariadb
+    build: wordpress/.
+    restart: always
 #    ports:
-#      - "8080:80"
-#  mariadb:
-#    build: mariadb/.
+#      - "8081:80"
+    networks:
+      - my_network
+  mariadb:
+    build: mariadb/.
+    restart: always
 #    ports:
-#      - "8080:80"
+#      - "8082:80"
+    networks:
+      - my_network
+
+networks:
+  my_network:

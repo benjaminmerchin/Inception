@@ -1,5 +1,7 @@
 FROM debian:buster
 
+MAINTAINER bmerchin@student.42.fr
+
 RUN apt-get update && apt-get install -y \
 	wget
 
@@ -21,10 +23,11 @@ COPY wp-config.php .
 
 #INSTALL WORDPRESS
 RUN mkdir -p /var/www/bmerchin
+RUN cd /var/www/bmerchin
 RUN wget http://wordpress.org/latest.tar.gz
 RUN tar -zvxf latest.tar.gz && rm latest.tar.gz
-RUN mv wordpress/ /var/www/bmerchin/.
-RUN mv wp-config.php /var/www/bmerchin/wordpress/.
+#RUN mv wordpress/ /var/www/bmerchin/.
+RUN mv ../../../wp-config.php wordpress/.
 
 #INSTALL PHP
 RUN cd /var/www/bmerchin
@@ -33,4 +36,4 @@ RUN tar -zvxf phpMyAdmin-5.0.1-english.tar.gz && rm -rf phpMyAdmin-5.0.1-english
 RUN mv phpMyAdmin-5.0.1-english phpmyadmin
 RUN mv ../../../config.inc.php phpmyadmin/. && cd && cd ..
 
-CMD php7.3.fpm -g "daemon off;"
+#CMD php7.3-fpm -g "daemon off;"
