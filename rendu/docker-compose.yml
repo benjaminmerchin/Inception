@@ -4,3 +4,11 @@ services:
     build: nginx/.
     ports:
       - "8080:80"
+#  wordpress:
+#    build: wordpress/.
+#    ports:
+#      - "8080:80"
+#  mariadb:
+#    build: mariadb/.
+#    ports:
+#      - "8080:80"
