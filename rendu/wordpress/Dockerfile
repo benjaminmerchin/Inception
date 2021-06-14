@@ -1,6 +1,6 @@
 FROM debian:buster
 
-MAINTAINER bmerchin@student.42.fr
+LABEL key=bmerchin@student.42.fr
 
 RUN apt-get update && apt-get install -y \
 	wget

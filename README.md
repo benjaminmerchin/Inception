@@ -5,4 +5,6 @@ A Dockerfile is a recipe for creating Docker images. A Docker image gets built b
 <!---
 docker build -t hello-world .
 docker run -p 80:80 -v /User/Benjamin...:/var/www/html/ hello-world
+
+/var/run/mysqld/mysqld.sock
 --->
