@@ -1,33 +1,53 @@
 version: "3.3"
 
 services:
-  nginx:
-    build: nginx/.
-    restart: always
-    ports:
-      - "8080:80"
-    networks:
-      - my_network
-  wordpress:
-    depends_on:
-      - mariadb
-    build: wordpress/.
-    restart: always
-#    ports:
-#      - "8081:80"
-    volumes:
-      - ./website:/var/www/bmerchin
-    networks:
-      - my_network
+#   nginx:
+#     build: nginx/.
+#     restart: always
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - wpdata:/var/www/bmerchin
+#     env_file:
+#       - .env
+#     networks:
+#       - my_network
+#   wordpress:
+#     depends_on:
+#       - mariadb
+#       - nginx
+#     build: wordpress/.
+#     restart: always
+#     volumes:
+#       - wpdata:/var/www/bmerchin
+#     env_file:
+#       - .env
+#     networks:
+#       - my_network
   mariadb:
     build: mariadb/.
     restart: always
-    ports:
-      - "3306:3306"
-#    volumes:
-#      - ./data:/var/lib/mysql
+    volumes:
+      - dbdata:/var/lib/mysql
+    env_file:
+      - .env
     networks:
       - my_network
+
+volumes:
+  dbdata:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/user42/data/dbdata'
+#   wpdata:
+#     driver: local
+#     driver_opts:
+#       type: 'none'
+#       o: 'bind'
+#       device: '/home/user42/data/wpdata'
 
 networks:
   my_network:
