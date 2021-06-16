@@ -16,7 +16,10 @@ RUN apt-get install -y \
 	php7.3-soap \
 	php7.3-xml \
 	php7.3-xmlrpc \
-	php7.3-zip 
+	php7.3-zip
+
+RUN apt-get install -y \
+	bash
 
 COPY config.inc.php .
 COPY wp-config.php .
@@ -30,10 +33,11 @@ RUN tar -zvxf latest.tar.gz && rm latest.tar.gz
 RUN mv ../../../wp-config.php wordpress/.
 
 #INSTALL PHP
-RUN cd /var/www/bmerchin
-RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.1/phpMyAdmin-5.0.1-english.tar.gz
-RUN tar -zvxf phpMyAdmin-5.0.1-english.tar.gz && rm -rf phpMyAdmin-5.0.1-english.tar.gz
-RUN mv phpMyAdmin-5.0.1-english phpmyadmin
-RUN mv ../../../config.inc.php phpmyadmin/. && cd && cd ..
+# RUN cd /var/www/bmerchin
+# RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.1/phpMyAdmin-5.0.1-english.tar.gz
+# RUN tar -zvxf phpMyAdmin-5.0.1-english.tar.gz && rm -rf phpMyAdmin-5.0.1-english.tar.gz
+# RUN mv phpMyAdmin-5.0.1-english phpmyadmin
+# RUN mv ../../../config.inc.php phpmyadmin/. && cd && cd ..
 
 #CMD php7.3-fpm -g "daemon off;"
+CMD sleep infinity
