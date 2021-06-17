@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get install -y \
 	bash
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY hello.html /var/www/bmerchin/hello.html
+#COPY nginx.conf /etc/nginx/conf.d/default.conf
+#COPY hello.html /var/www/bmerchin/hello.html
 
 #CMD bash service nginx start
 

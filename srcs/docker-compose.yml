@@ -10,6 +10,7 @@ services:
       - "443:443"
     volumes:
       - wpdata:/var/www/bmerchin
+      - ./nginx/conf.d:/etc/nginx/conf.d
     env_file:
       - .env
     networks:

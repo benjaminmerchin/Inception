@@ -26,11 +26,10 @@ COPY wp-config.php .
 
 #INSTALL WORDPRESS
 RUN mkdir -p /var/www/bmerchin
-RUN cd /var/www/bmerchin
 RUN wget http://wordpress.org/latest.tar.gz
 RUN tar -zvxf latest.tar.gz && rm latest.tar.gz
-#RUN mv wordpress/ /var/www/bmerchin/.
-RUN mv ../../../wp-config.php wordpress/.
+RUN mv wordpress/ /var/www/bmerchin/.
+RUN mv wp-config.php /var/www/bmerchin/wordpress/.
 
 #INSTALL PHP
 # RUN cd /var/www/bmerchin
