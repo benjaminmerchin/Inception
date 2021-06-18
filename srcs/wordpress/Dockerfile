@@ -25,11 +25,11 @@ COPY config.inc.php .
 COPY wp-config.php .
 
 #INSTALL WORDPRESS
-RUN mkdir -p /var/www/bmerchin
+RUN mkdir -p /var/www
 RUN wget http://wordpress.org/latest.tar.gz
 RUN tar -zvxf latest.tar.gz && rm latest.tar.gz
-RUN mv wordpress/ /var/www/bmerchin/.
-RUN mv wp-config.php /var/www/bmerchin/wordpress/.
+RUN mv wordpress/ /var/www/.
+#RUN mv wp-config.php /var/www/wordpress/.
 
 #INSTALL PHP
 # RUN cd /var/www/bmerchin
@@ -39,4 +39,9 @@ RUN mv wp-config.php /var/www/bmerchin/wordpress/.
 # RUN mv ../../../config.inc.php phpmyadmin/. && cd && cd ..
 
 #CMD php7.3-fpm -g "daemon off;"
-CMD sleep infinity
+RUN mkdir -p /run/php/
+COPY run_me.sh .
+
+EXPOSE 9000
+
+CMD ["bash", "run_me.sh"]
