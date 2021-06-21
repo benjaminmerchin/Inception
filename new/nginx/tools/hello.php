@@ -1,4 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My first PHP page</h1>
+
+<?php
+echo "Hello World!";
+?>
+
+</body>
+</html>
+
+<!-- <!doctype html>
 
 <html lang="en">
 <head>
@@ -15,4 +28,4 @@
 <body>
   <h1>Hello VICTOIRE !</h1>
 </body>
-</html>
+</html> -->

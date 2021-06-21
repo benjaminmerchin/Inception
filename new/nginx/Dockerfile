@@ -4,16 +4,17 @@ RUN apt-get update && apt-get install -y \
 	nginx \
 	openssl
 
+RUN echo step_9_ok
 RUN rm /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-COPY tools/hello.html /tmp/plop.html
-COPY tools/hello.html /tmp/hello.html
+COPY tools/hello.php /tmp/plop.php
+COPY tools/hello.php /tmp/hello.php
 COPY tools/run_me.sh .
-#RUN cat /tmp/plop.html
+#RUN cat /tmp/plop.php
 
-#RUN mv /tmp/plop.html /var/www/html/hello.html
+#RUN mv /tmp/plop.php /var/www/html/hello.php
 
-#RUN cat /var/www/html/hello.html
+#RUN cat /var/www/html/hello.php
 
 RUN mkdir -p /etc/nginx/ssl
 

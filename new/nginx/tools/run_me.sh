@@ -1,3 +1,3 @@
 #!/bin/bash
-cp tmp/hello.html var/www/html/. 
+cp tmp/hello.php var/www/html/. 
 nginx -g "daemon off;"
