@@ -30,7 +30,7 @@ services:
     env_file:
       - .env
     environment:
-      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_HOST: mariadb:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
     networks:
@@ -73,19 +73,19 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/bmerchin/data/dbdata'
+      device: '/home/bmerchin/data/old-dbdata'
   wpdata:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/bmerchin/data/wpdata'
-  wpdata2:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/home/bmerchin/data/wpdata2'
+      device: '/home/bmerchin/data/old-wpdata'
+#   wpdata2:
+#     driver: local
+#     driver_opts:
+#       type: 'none'
+#       o: 'bind'
+#       device: '/home/bmerchin/data/wpdata2'
 
 networks:
   my_network:

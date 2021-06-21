@@ -1,0 +1,66 @@
+version: '3.3'
+
+services:
+    mariadb:
+        container_name: mysql
+        image: mysql:5.7
+        container_name: mariadb
+        volumes:
+            - dbdata:/var/lib/mysql/
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: somewordpress
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
+        networks:
+            - wp
+
+    wordpress:
+        depends_on:
+            - mariadb
+        container_name: wordpress
+        image: wordpress:latest
+        volumes:
+            - wpdata:/var/www/html/
+        ports:
+            - 8000:80
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: mariadb:3306
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
+        networks:
+            - wp
+
+    nginx:
+        build: nginx/.
+        # depends_on:
+        #     - wordpress
+        container_name: nginx
+        image: nginx:nginx
+        ports:
+            - 443:443
+        restart: always
+        volumes:
+            - wpdata:/var/www/html/
+        networks:
+            - wp
+        
+
+networks:
+    wp:
+
+volumes:
+    dbdata:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: '/home/bmerchin/data/dbdata'
+    wpdata:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: '/home/bmerchin/data/wpdata'
