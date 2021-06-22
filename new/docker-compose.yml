@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
     mariadb:
-        build: wordpress/.
+        build: mariadb/.
         container_name: mysql
         image: mariadb:mariadb
         container_name: mariadb
@@ -52,6 +52,15 @@ services:
         networks:
             - wp
         
+    # adminer:
+    #     build: adminer/.
+    #     depends_on:
+    #         - wordpress
+    #     container_name: adminer
+    #     image: adminer:adminer
+    #     restart: always
+    #     networks:
+    #         - wp
 
 networks:
     wp:
