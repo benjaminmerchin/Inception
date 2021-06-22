@@ -26,7 +26,7 @@ services:
         volumes:
             - wpdata:/var/www/html/
         ports:
-            - 9000:80
+            - "9000:80"
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: password
@@ -45,7 +45,7 @@ services:
         container_name: nginx
         image: nginx:nginx
         ports:
-            - 443:443
+            - "443:443"
         restart: always
         volumes:
             - wpdata:/var/www/html/
