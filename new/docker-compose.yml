@@ -42,6 +42,7 @@ services:
         build: nginx/.
         depends_on:
             - wordpress
+            - mariadb
         container_name: nginx
         image: nginx:nginx
         ports:
@@ -58,9 +59,26 @@ services:
     #         - wordpress
     #     container_name: adminer
     #     image: adminer:adminer
+    #     environment: 
+    #         ADMINER_DEFAULT_SERVER: mariadb
+    #         ADMINER_DESIGN: galkaev
     #     restart: always
     #     networks:
     #         - wp
+    #     ports: 
+    #         - 8080:8080
+
+    # website:
+    #     build: website/.
+    #     depends_on:
+    #         - wordpress
+    #     container_name: website
+    #     image: website:website
+    #     restart: always
+    #     networks:
+    #         - wp
+    #     ports: 
+    #         - 1234:1234
 
 networks:
     wp:

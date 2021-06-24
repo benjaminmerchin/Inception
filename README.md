@@ -7,4 +7,8 @@ docker build -t hello-world .
 docker run -p 80:80 -v /User/Benjamin...:/var/www/html/ hello-world
 
 /var/run/mysqld/mysqld.sock
+
+apt-get install vim -y
+
+todo : http://bmerchin.42.fr qui renvoie sur nginx
 -->
