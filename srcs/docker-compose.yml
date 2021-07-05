@@ -82,6 +82,38 @@ services:
         ports: 
             - 1234:81
 
+    grafana:
+        build: grafana/.
+        depends_on:
+            - wordpress
+        container_name: grafana
+        image: grafana:grafana
+        restart: always
+        networks:
+            - wp
+        ports: 
+            - 3000:3000
+        volumes:
+            - grafana-data:/var/lib/grafana
+
+    # monica:
+    #     image: monica
+    #     depends_on:
+    #         - wordpress
+    #     container_name: monica
+    #     restart: always
+    #     networks:
+    #         - wp
+    #     ports: 
+    #         - 3333:82
+    #     environment:
+    #         - APP_KEY=vukGuMtPwUmR7KTgtH4NNTKDsK8D+58SAtsDpaaGWkA
+    #         - DB_HOST=mariadb
+    #         - DB_USERNAME=wordpress
+    #         - DB_PASSWORD=wordpress
+    #     volumes:
+    #         - monica-data:/var/www/html/storage
+
 networks:
     wp:
 
@@ -98,3 +130,15 @@ volumes:
             o: bind
             type: none
             device: '/home/bmerchin/data/wpdata'
+    grafana-data:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: '/home/bmerchin/data/grafana-data'
+    monica-data:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: '/home/bmerchin/data/monica-data'

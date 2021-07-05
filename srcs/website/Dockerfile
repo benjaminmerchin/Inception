@@ -6,10 +6,12 @@ RUN apk update && \
         bash \
 		vim
 
-COPY . /usr/share/nginx/html
+COPY content /usr/share/nginx/html
+COPY default.conf /usr/share/nginx/html
 
 RUN rm /etc/nginx/conf.d/default.conf && \
 	mv /usr/share/nginx/html/default.conf /etc/nginx/conf.d/
+
 
 
 # FROM debian:buster
