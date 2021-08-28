@@ -10,8 +10,8 @@ RUN apk update && \
 COPY content /usr/share/nginx/html
 COPY default.conf /usr/share/nginx/html
 
-RUN rm /etc/nginx/conf.d/default.conf && \
-	mv /usr/share/nginx/html/default.conf /etc/nginx/conf.d/
+RUN rm /etc/nginx/conf.d/default.conf
+RUN	mv /usr/share/nginx/html/default.conf /etc/nginx/conf.d/
 
 EXPOSE 81
 

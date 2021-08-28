@@ -7,14 +7,6 @@ RUN apt-get update && apt-get install -y \
 RUN echo step_9_ok
 RUN rm /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-COPY tools/hello.php /tmp/plop.php
-COPY tools/hello.php /tmp/hello.php
-COPY tools/run_me.sh .
-#RUN cat /tmp/plop.php
-
-#RUN mv /tmp/plop.php /var/www/html/hello.php
-
-#RUN cat /var/www/html/hello.php
 
 RUN mkdir -p /etc/nginx/ssl
 
@@ -22,4 +14,4 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/b
 
 EXPOSE 443
 
-ENTRYPOINT [ "./run_me.sh" ]
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]

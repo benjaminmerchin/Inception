@@ -43,8 +43,8 @@ services:
         depends_on:
             - wordpress
             - mariadb
-            - adminer
-            - website
+#            - adminer
+#            - website
         container_name: nginx
         image: nginx:nginx
         ports:
@@ -55,47 +55,47 @@ services:
         networks:
             - wp
 
-    adminer:
-        build: adminer/.
-        depends_on:
-            - wordpress
-        container_name: adminer
-        image: adminer:adminer
-        environment: 
-            ADMINER_DEFAULT_SERVER: mariadb
-            ADMINER_DESIGN: galkaev
-        restart: always
-        networks:
-            - wp
-        ports: 
-            - 8080:8080
+    # adminer:
+    #     build: adminer/.
+    #     depends_on:
+    #         - wordpress
+    #     container_name: adminer
+    #     image: adminer:adminer
+    #     environment: 
+    #         ADMINER_DEFAULT_SERVER: mariadb
+    #         ADMINER_DESIGN: galkaev
+    #     restart: always
+    #     networks:
+    #         - wp
+    #     ports: 
+    #         - 8080:8080
 
-    website:
-        build: website/.
-        depends_on:
-            - wordpress
-        container_name: website
-        image: website:website
-        restart: always
-        networks:
-            - wp
-        ports: 
-            - 1234:81
+    # website:
+    #     build: website/.
+    #     depends_on:
+    #         - wordpress
+    #     container_name: website
+    #     image: website:website
+    #     restart: always
+    #     networks:
+    #         - wp
+    #     ports: 
+    #         - 1234:81
 
-    vsftpd:
-        image: panubo/vsftpd
-        depends_on:
-            - wordpress
-        environment:
-            - FTP_USER=wordpress
-            - FTP_PASSWORD=wordpress
-        restart: always
-        networks:
-            - wp
-        volumes:
-            - wpdata:/srv
-        expose:
-            - 21
+    # vsftpd:
+    #     image: panubo/vsftpd
+    #     depends_on:
+    #         - wordpress
+    #     environment:
+    #         - FTP_USER=wordpress
+    #         - FTP_PASSWORD=wordpress
+    #     restart: always
+    #     networks:
+    #         - wp
+    #     volumes:
+    #         - wpdata:/srv
+    #     expose:
+    #         - 21
 #        network_mode: host
 
 networks:

@@ -24,7 +24,7 @@ COPY conf/wp-config.php .
 
 #INSTALL WORDPRESS
 RUN mkdir -p /var/www
-			#RUN mkdir -p /var/www/html
+RUN mkdir -p /var/www/html
 #RUN wget http://wordpress.org/latest.tar.gz
 #RUN tar -zvxf latest.tar.gz && rm latest.tar.gz
 #RUN mv wordpress html && mv html /var/www/

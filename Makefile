@@ -1,27 +1,27 @@
-PATH=./srcs/docker-compose.yml
+MOVE=cd srcs &&
 
 all: up
 
 up:
-	docker-compose -f $(PATH) up -d --build 
+	$(MOVE) docker-compose up -d --build
 
 upv:
-	docker-compose -f $(PATH) up --build 
+	$(MOVE) docker-compose up -d --build -v
 
 down:
-	docker-compose -f $(PATH) down
+	$(MOVE) docker-compose down
 #--remove-orphans
 downv:
-	docker-compose -f $(PATH) down -v
+	$(MOVE) docker-compose down -v
 
 network:
 	docker network ls
 
 ps:
-	docker-compose -f $(PATH) ps
+	$(MOVE) docker-compose ps
 
 logs:
 	@docker logs wordpress
 	@docker logs nginx
 	@docker logs mariadb
-	@docker logs adminer
+#	@docker logs adminer
