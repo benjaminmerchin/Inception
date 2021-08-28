@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.14
 
 RUN echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
     echo '@community http://nl.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories && \

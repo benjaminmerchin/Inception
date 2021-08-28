@@ -41,7 +41,7 @@ RUN mkdir -p /var/www
 
 RUN echo "listen = 9000" >> /etc/php/7.3/fpm/pool.d/www.conf
 
-RUN mv wp-config.php /var/www/html/wp-config.php
+RUN mv wp-config.php /var/www/html/.
 
 RUN mkdir -p /run/php/
 COPY tools/run_me.sh .

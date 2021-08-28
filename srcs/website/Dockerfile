@@ -1,10 +1,11 @@
-FROM nginx:alpine
+FROM alpine:3.14
 
 RUN apk update && \
     apk upgrade && \
     apk add \
         bash \
-		vim
+		vim \
+		nginx
 
 COPY content /usr/share/nginx/html
 COPY default.conf /usr/share/nginx/html
@@ -12,16 +13,6 @@ COPY default.conf /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf && \
 	mv /usr/share/nginx/html/default.conf /etc/nginx/conf.d/
 
+EXPOSE 81
 
-
-# FROM debian:buster
-
-# RUN apt-get update && apt-get install -y \
-# 	nginx \
-# 	bash
-
-# COPY index.html /var/www/html/
-
-# EXPOSE 80
-
-# ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

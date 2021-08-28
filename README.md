@@ -11,4 +11,14 @@ docker run -p 80:80 -v /User/Benjamin...:/var/www/html/ hello-world
 apt-get install vim -y
 
 todo : http://bmerchin.42.fr qui renvoie sur nginx
+
+
+
+
 -->
+There is 5 possible bonuses
+Bonus: redis [ ]
+Bonus:  FTP  [ ] TODO
+Bonus:website[X]
+Bonus:adminer[X]
+Bonus: open  [ ]
